@@ -1,7 +1,13 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-
+import Spinner from '../layout/Spinner';
+import UserItem from './UserItem'
 function UserResults() {
+
+    const [users, setUsers] = useState([])
+    const [loading, setLoading] = useState(true) // set to false when data is retrieved
+
+
     useEffect(() => {
         fetchUsers()
     }, [])
@@ -16,10 +22,28 @@ function UserResults() {
             })
     
         const data = await response.json()
-        console.log(data);
+
+        setUsers(data)
+        setLoading(false)
+
+        // console.log(data);
     }
 
-    return <div> UserResults </div>
+    if (!loading) {
+
+        return <div className='grid grid-cols-1 gap-9 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2'>
+        
+            {users.map((user) =>
+                <UserItem key={user.id} user={user}/>
+        
+        
+            )}
+    
+        </div>
+        
+    } else {
+        return <Spinner/>
+    }
 
 }
 export default UserResults
