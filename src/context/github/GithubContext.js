@@ -20,6 +20,37 @@ export const GithubProvider = ({ children }) => {
         //dispatch an action to our reducer
 
 
+        const searchUsers = async (text) => {
+            
+            setLoading() // text is written by users
+            
+
+            const params = new URLSearchParams({
+                q:text
+            })
+
+
+            const response = await fetch(`${GITHUB_URL}/search/users?${params}`,
+                {
+                    headers: {
+                        Authorization: `token ${GITHUB_TOKEN}` // send bearer token also
+                    },
+                })
+        
+            const {items} = await response.json()
+    
+            dispatch({
+                type: 'GET_USERS',
+                payload:items,
+            })
+        }
+    
+    
+    
+    
+    
+    
+    
     // Get users but for testing purposes
     const fetchUsers = async () => {
         setLoading()
@@ -42,7 +73,7 @@ export const GithubProvider = ({ children }) => {
     
 
 
-    return <GithubContext.Provider value={{users:state.users, loading:state.loading, fetchUsers}}>
+    return <GithubContext.Provider value={{users:state.users, loading:state.loading, searchUsers}}>
         {children}
     </GithubContext.Provider>
 }
