@@ -4,18 +4,19 @@ import { Link } from 'react-router-dom'
 import Spinner from "../components/layout/Spinner";
 import { useParams } from "react-router-dom";
 import GithubContext from "../context/github/GithubContext";
-
+import RepoList from "../components/repos/RepoList";
 
 
 const User = () => {
-    const { getUser, user, loading } = useContext(GithubContext)
+    const { getUser, user, loading, repos, getUserRepos } = useContext(GithubContext)
     
     const params = useParams()
 
     useEffect(() => {
         console.log("Param login" + params.login)
         getUser(params.login)
-        // getUserRepos(params.login)
+      getUserRepos(params.login)
+      // eslint-disable-next-line react-hooks/exhaustive-deps 
     }, [])
 
     if (loading)
