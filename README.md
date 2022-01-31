@@ -3,10 +3,10 @@
 
 An app to lookup details of Github users in a beautiful User Interface.
 
-- Search Users
+- Searches users and shows them in a grid format 
 - Get access to all social media websites
-- See the latest repositories
-- 
+- Shows the latest repositories
+- Shows number of following, follower, public repos, public gists
 
 Made using Javascript, ReactJS, TailwindCSS and DaisyUI. Deployed on Vercel. 
 
@@ -22,6 +22,8 @@ Once cloned, use ```npm install``` to download the dependencies. Use ```npm run 
 The web app can then be accessed at http://localhost:3000.
 
 ### TODO
+
+[  ] -> Add link to Git gist
 [  ] -> Update README and add GIF/screenshots
 [  ] -> Fix Linkedin URL
 [  ] -> Figure out how to dynamically render text in Markdown
