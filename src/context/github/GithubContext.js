@@ -126,9 +126,13 @@ export const GithubProvider = ({ children }) => {
 
 
 
-    return <GithubContext.Provider value={{users:state.users, loading:state.loading, user:state.user,repos:state.repos, searchUsers, clearUsers, getUser,getUserRepos}}>
-        {children}
-    </GithubContext.Provider>
+    // return <GithubContext.Provider value={{users:state.users, loading:state.loading, user:state.user,repos:state.repos, searchUsers, clearUsers, getUser,getUserRepos}}>
+    //     {children}
+    // </GithubContext.Provider>
+
+    return <GithubContext.Provider value={{...state, searchUsers, clearUsers, getUser,getUserRepos}}>
+    {children}
+</GithubContext.Provider>
 }
 
 export default GithubContext;
