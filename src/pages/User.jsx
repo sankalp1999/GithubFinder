@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 import GithubContext from "../context/github/GithubContext";
 import RepoList from "../components/repos/RepoList";
 import {getUser, getUserRepos} from '../context/github/GithubActions'
+import Markdown from "markdown-to-jsx";
 
 const User = () => {
     const {user, loading, repos, dispatch} = useContext(GithubContext)
@@ -50,8 +51,9 @@ const User = () => {
           if (loading) {
             return <Spinner />
           }
-        
-          return (
+          // encodeURI('https://github-readme-stats.vercel.app/api?username=sankalp1999&include_all_commits=true')
+            
+      return (
             <>
               <div className='w-full mx-auto lg:w-10/12'>
                 <div className='mb-4'>
@@ -59,7 +61,7 @@ const User = () => {
                     Back To Search
                   </Link>
                 </div>
-        
+          
                 <div className='grid grid-cols-1 xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-3 mb-8 md:gap-8'>
                   <div className='custom-card-image mb-6 md:mb-0'>
                     <div className='rounded-lg shadow-xl card image-full'>
